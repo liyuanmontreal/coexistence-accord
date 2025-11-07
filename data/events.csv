@@ -1,0 +1,4 @@
+id,title,desc,choiceA_label,choiceA_effects,choiceB_label,choiceB_effects
+1,传粉昆虫锐减,传粉昆虫下降35%,扩展授粉生态,{"biodiv":8,"economy":-4,"society":2,"climate":1},投资机器人授粉,{"biodiv":-2,"economy":5,"society":-1,"climate":3}
+2,极端高温,史上罕见热浪和野火风险,森林防火基金,{"biodiv":6,"economy":-2,"society":1,"climate":0},维持现状,{"biodiv":-7,"economy":1,"society":-1,"climate":-4}
+3,粮食压力,谷物产量波动,支持再生农业,{"biodiv":5,"economy":-2,"society":1,"climate":2},进口粮食,{"biodiv":0,"economy":2,"society":1,"climate":-2}
