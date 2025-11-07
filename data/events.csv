@@ -1,4 +1,11 @@
 id,title,desc,choiceA_label,choiceA_effects,choiceB_label,choiceB_effects
-1,传粉昆虫锐减,传粉昆虫下降35%,扩展授粉生态,{"biodiv":8,"economy":-4,"society":2,"climate":1},投资机器人授粉,{"biodiv":-2,"economy":5,"society":-1,"climate":3}
-2,极端高温,史上罕见热浪和野火风险,森林防火基金,{"biodiv":6,"economy":-2,"society":1,"climate":0},维持现状,{"biodiv":-7,"economy":1,"society":-1,"climate":-4}
-3,粮食压力,谷物产量波动,支持再生农业,{"biodiv":5,"economy":-2,"society":1,"climate":2},进口粮食,{"biodiv":0,"economy":2,"society":1,"climate":-2}
+1,传粉昆虫锐减,主要传粉昆虫数量下降35%，威胁农作物授粉与粮食产量,扩展授粉生态走廊,"{'biodiv':8,'economy':-3,'society':2,'climate':1,'trust':2}",投资机器人授粉系统,"{'biodiv':-1,'economy':4,'society':-1,'climate':2,'trust':-1}"
+2,极端高温年份,史上罕见热浪与林火风险加剧,增加森林防火与城市降温预算,"{'biodiv':4,'economy':-2,'society':2,'climate':1,'trust':2}",维持现状以观察长期趋势,"{'biodiv':-6,'economy':1,'society':-1,'climate':-3,'trust':-2}"
+3,粮食供给压力,连续减产引发价格波动,推广再生农业与本地粮食系统,"{'biodiv':5,'economy':-1,'society':2,'climate':2,'trust':2}",依赖国际进口缓冲价格,"{'biodiv':0,'economy':2,'society':1,'climate':-1,'trust':-1}"
+4,海平面上升,沿海低洼社区面临长期淹没风险,实施渐进迁移与生态缓冲带,"{'biodiv':3,'economy':-2,'society':2,'climate':1,'trust':3}",短期筑堤巩固资产,"{'biodiv':-1,'economy':1,'society':1,'climate':0,'trust':-1}"
+5,清洁能源突破,新一代太阳能提升效率并降低成本,加速补贴清洁能源转型,"{'biodiv':2,'economy':1,'society':2,'climate':6,'trust':2}",维持渐进式转型路径,"{'biodiv':0,'economy':2,'society':1,'climate':2,'trust':0}"
+6,森林病害扩散,病虫害导致大片森林衰退,加强检疫与多样树种复植,"{'biodiv':6,'economy':-2,'society':1,'climate':2,'trust':2}",集中砍伐高风险林木开发利用,"{'biodiv':-4,'economy':4,'society':-1,'climate':-2,'trust':-2}"
+7,渔业资源衰竭,大型鱼类资源下降25%,划定大型禁渔区与生态红线,"{'biodiv':7,'economy':-3,'society':1,'climate':1,'trust':2}",发展高密度深海养殖出口创汇,"{'biodiv':-2,'economy':4,'society':-1,'climate':1,'trust':-1}"
+8,空气质量警报,重污染事件影响公众健康,强制减排与公共交通投资,"{'biodiv':2,'economy':-2,'society':3,'climate':3,'trust':3}",临时应急限行与宣传,"{'biodiv':1,'economy':-1,'society':1,'climate':1,'trust':0}"
+9,科技不平等,自动化冲击低技能就业,设立公正转型基金与再培训,"{'biodiv':0,'economy':-1,'society':4,'climate':0,'trust':3}",放任市场自行调整,"{'biodiv':0,'economy':3,'society':-3,'climate':0,'trust':-3}"
+10,青年气候联盟,青年要求更强气候行动,纳入青年参与与公民议会,"{'biodiv':1,'economy':-1,'society':5,'climate':3,'trust':4}",礼貌接待但不调整政策,"{'biodiv':0,'economy':1,'society':0,'climate':0,'trust':-2}"

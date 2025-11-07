@@ -2,34 +2,46 @@ import pandas as pd
 import random
 import ast
 import re
+from pathlib import Path
 
-df = pd.read_csv("data/events.csv")
+DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "events.csv"
+df = pd.read_csv(DATA_PATH)
 
 def safe_parse(s):
-    """安全解析事件效果列，自动补引号并补全字段"""
+    # 安全解析事件效果列，自动补引号并补全字段
     if pd.isna(s):
-        return {"biodiv":0,"economy":0,"society":0,"climate":0}
+        return {"biodiv":0,"economy":0,"society":0,"climate":0,"trust":0}
     s = str(s).strip()
     if not s.startswith("{"):
         s = "{" + s
     if not s.endswith("}"):
         s = s + "}"
 
-    # 自动补引号
+    # 自动给未加引号的键添加引号
     s = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)(\s*:)', r'\1"\2"\3', s)
 
     try:
         data = ast.literal_eval(s)
-        # 确保四个关键键都存在
-        for k in ["biodiv", "economy", "society", "climate"]:
-            if k not in data:
-                data[k] = 0
-        return data
     except Exception as e:
         print("⚠️ 解析错误:", s, "|", e)
-        return {"biodiv":0,"economy":0,"society":0,"climate":0}
+        data = {}
+
+    for k in ["biodiv","economy","society","climate","trust"]:
+        data.setdefault(k, 0)
+    return data
 
 def draw_event():
+    if df.empty:
+        return {
+            "id": "NONE",
+            "title": "无事件 / No Event",
+            "desc": "当前年度没有特别事件，请根据长期目标继续推进政策。",
+            "choices": {
+                "A": {"label": "维持现状", "effects": {"biodiv":0,"economy":0,"society":0,"climate":0,"trust":0}},
+                "B": {"label": "象征性环保声明", "effects": {"biodiv":1,"economy":-1,"society":1,"climate":1,"trust":1}},
+            },
+        }
+
     row = df.sample(1).iloc[0]
     return {
         "id": row["id"],

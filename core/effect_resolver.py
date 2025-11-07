@@ -1,2 +1,2 @@
 def resolve_effect(choice):
-    return choice["effects"]
+    return choice.get('effects', {})

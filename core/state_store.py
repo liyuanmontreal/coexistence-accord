@@ -1,38 +1,49 @@
 import pandas as pd
+from dataclasses import dataclass, field
+from typing import List, Dict
 
-class State:
-    def __init__(self):
-        self.year = 2025
-        self.biodiv = 70
-        self.economy = 70
-        self.society = 70
-        self.climate = 70
-        self.history = []
+@dataclass
+class WorldState:
+    year: int = 2025
+    biodiv: float = 70.0
+    economy: float = 70.0
+    society: float = 70.0
+    climate: float = 70.0
+    trust: float = 60.0
+    media_bias: float = 0.0
+    history: List[Dict] = field(default_factory=list)
 
-    def apply(self, effects):
-        self.biodiv += effects["biodiv"]
-        self.economy += effects["economy"]
-        self.society += effects["society"]
-        self.climate += effects["climate"]
-        self.year += 1
+    def clamp(self):
+        for k in ["biodiv", "economy", "society", "climate", "trust"]:
+            v = getattr(self, k)
+            setattr(self, k, max(0.0, min(100.0, v)))
 
-        for attr in ["biodiv","economy","society","climate"]:
-            v = getattr(self, attr)
-            setattr(self, attr, max(0, min(100, v)))
+    def snapshot(self):
+        return {
+            "year": self.year,
+            "biodiv": self.biodiv,
+            "economy": self.economy,
+            "society": self.society,
+            "climate": self.climate,
+            "trust": self.trust,
+            "media_bias": self.media_bias,
+        }
 
-        self.history.append([self.year,self.biodiv,self.economy,self.society,self.climate])
+    def record(self):
+        self.history.append(self.snapshot())
 
     def global_metrics(self):
         return {
             "Biodiversity": self.biodiv,
             "Economy": self.economy,
             "Society": self.society,
-            "Climate Stability": self.climate
+            "Climate Stability": self.climate,
+            "Trust": self.trust,
         }
 
     def history_df(self):
         if not self.history:
             return pd.DataFrame()
-        return pd.DataFrame(self.history, columns=["year","biodiv","economy","society","climate"])
+        return pd.DataFrame(self.history)
 
-state = State()
+state = WorldState()
